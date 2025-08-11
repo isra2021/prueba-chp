@@ -1,4 +1,4 @@
-name: Manual test: call Twilio Function
+name: Manual test call Twilio Function
 
 on:
   workflow_dispatch:

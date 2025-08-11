@@ -1,9 +1,9 @@
-name: One-off: send at 17:10 AR today
+name: One-off: send at 17:50 AR today
 
 on:
   schedule:
-    # 20:10 UTC = 17:10 America/Argentina/Cordoba
-    - cron: "10 20 * * *"
+    # 20:50 UTC = 17:50 America/Argentina/Cordoba
+    - cron: "50 20 * * *"
   workflow_dispatch: {}   # permite ejecutarlo manualmente
 
 jobs:

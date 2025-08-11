@@ -1,18 +1,17 @@
-name: Daily appointment reminders
+name: One-off: send at 17:10 AR today
 
 on:
   schedule:
-    # 11:00 UTC = 08:00 America/Argentina/Cordoba (UTC-3, sin DST)
-    - cron: "0 11 * * *"
-  workflow_dispatch: {}   # Permite ejecutarlo manualmente para probar
+    # 20:10 UTC = 17:10 America/Argentina/Cordoba
+    - cron: "10 20 * * *"
+  workflow_dispatch: {}   # permite ejecutarlo manualmente
 
 jobs:
   call_twilio_function:
     runs-on: ubuntu-latest
     steps:
-      - name: Print current time (debug)
-        run: |
-          echo "Runner UTC time: $(date -u)"
+      - name: Print current UTC time (debug)
+        run: echo "Runner UTC time: $(date -u)"
       - name: Call Twilio Function
         run: |
           set -e

@@ -1,6 +1,8 @@
-name: Manual test call Twilio Function
+name: Send at 18:30 AR
 
 on:
+  schedule:
+    - cron: "30 21 * * *"   # 21:30 UTC = 18:30 AR
   workflow_dispatch:
 
 jobs:

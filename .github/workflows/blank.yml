@@ -1,4 +1,4 @@
-name: Manual test:call Twilio Function
+name: Manual test: call Twilio Function
 
 on:
   workflow_dispatch:
@@ -12,4 +12,4 @@ jobs:
           curl -X POST \
             -H "Content-Type: application/json" \
             -d "{\"token\":\"${{ secrets.REMINDER_TOKEN }}\"}" \
-            "${{ vars.REMINDER_URL }}"
+            "${{ secrets.REMINDER_URL }}"

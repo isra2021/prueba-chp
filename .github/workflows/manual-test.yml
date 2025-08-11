@@ -1,31 +1,15 @@
-name: Manual test call Twilio Function now
+name: Manual test: call Twilio Function
 
 on:
   workflow_dispatch:
 
 jobs:
-  debug_call:
+  run-curl:
     runs-on: ubuntu-latest
     steps:
-      - name: Check inputs (URL visible, token no)
+      - name: Call Twilio Function
         run: |
-          echo "REMINDER_URL=${{ vars.REMINDER_URL }}"
-          if [ -z "${{ secrets.REMINDER_TOKEN }}" ]; then
-            echo "REMINDER_TOKEN is EMPTY (secret missing)"; exit 1
-          else
-            echo "REMINDER_TOKEN is set ✅"
-          fi
-
-      - name: Call Twilio Function (show HTTP status + body)
-        run: |
-          set -e
-          RESP=$(curl -sS -X POST \
+          curl -X POST \
             -H "Content-Type: application/json" \
             -d "{\"token\":\"${{ secrets.REMINDER_TOKEN }}\"}" \
-            "${{ vars.REMINDER_URL }}" \
-            -w "\n%{http_code}")
-          BODY="${RESP%$'\n'*}"
-          CODE="${RESP##*$'\n'}"
-          echo "HTTP CODE: $CODE"
-          echo "RESPONSE BODY: $BODY"
-          test "$CODE" -ge 200 -a "$CODE" -lt 300
+            "${{ vars.REMINDER_URL }}"

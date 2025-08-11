@@ -1,7 +1,7 @@
 name: Manual test: call Twilio Function now
 
 on:
-  workflow_dispatch: {}   # permite ejecutarlo manualmente
+  workflow_dispatch:
 
 jobs:
   debug_call:
